@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CrudWeb.Models.ProductModel>
+
+@{
+    var products = ViewBag.Products;
+    ViewData["Title"] = "View";
+}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+      foreach(var product in products){
+        <tr>
+          <th scope="row">2</th>
+          <td>@products.Name</td>
+          <td>Thornton</td>
+          <td>fat</td>
+        </tr>
+      }
+  </tbody>
+</table>
