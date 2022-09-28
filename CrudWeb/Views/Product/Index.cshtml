@@ -1,27 +1,35 @@
 ﻿@model IEnumerable<CrudWeb.Models.ProductModel>
 
 @{
-    var products = ViewBag.Products;
-    ViewData["Title"] = "View";
+    var products = ViewBag.Product;
+    ViewData["Title"] = "Produtos";
 }
+<div class="row">
+    <div class="col-12">
+       <a type="button" asp-action="Criar" asp-controller="Product" class="btn btn-dark float-right">Novo produto</a>
+    </div>
+</div>
 
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
-  <tbody>
-      foreach(var product in products){
+  @foreach(var product in products){
+      <tbody>
         <tr>
-          <th scope="row">2</th>
-          <td>@products.Name</td>
-          <td>Thornton</td>
-          <td>fat</td>
+          <td>@product.Id</td>
+          <td>@product.Name</td>
+          <td class="text-center">@product.Price</td>
+          <td>
+              <a href = "Product/Editar/@product.Id"><i class="bi-pencil" alt="Editar" style="padding-right:10px;"></i></a>
+              <a href = "Product/Excluir/@product.Id"><i class="bi-x-circle" alt="DeleteProduct"></i></a>
+          </td>
         </tr>
-      }
-  </tbody>
+      </tbody>
+  }
 </table>

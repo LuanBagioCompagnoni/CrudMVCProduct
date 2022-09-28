@@ -1,0 +1,49 @@
+﻿@model CrudWeb.Models.ProductModel
+
+@{
+    var product = ViewBag.Product;
+    ViewData["Title"] = "Criar";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Criar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group justify-content-center">
+                <input asp-for="Id" class="form-control" type="hidden" />
+            </div>
+            <div class="form-group mt-2 justify-content-center">
+                <label asp-for="Name" class="control-label">Nome</label>
+                <input asp-for="Name" placeholder="Insira o nome" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <label asp-for="Price" class="control-label">Preço</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">R$</span>
+                </div>
+                   <input asp-for="Price" placeholder="Insira o preço" class="form-control" aria-label="Quantia">
+               @*<div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div>*@
+            </div>
+            <span asp-validation-for="Price" class="text-danger">Formato: 0.00</span>
+            @*<div class="form-group mt-2 justify-content-center">
+                <label asp-for="Price" class="control-label">Preço</label>
+                <input asp-for="Price" placeholder="Insira o preço" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>*@
+            <div class="form-group mt-3 justify-content-center">
+                <input type="submit" value="Confirmar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class= "mt-2 justify-content-center">
+    <a asp-action="Index">Retornar para a lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
