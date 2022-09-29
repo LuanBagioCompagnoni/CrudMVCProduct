@@ -1,7 +1,6 @@
 ﻿@model CrudWeb.Models.ProductModel
 
 @{
-    var product = ViewBag.Product;
     ViewData["Title"] = "Criar";
 }
 
@@ -22,12 +21,9 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">R$</span>
                 </div>
-                   <input asp-for="Price" placeholder="Insira o preço" class="form-control" aria-label="Quantia">
-               @*<div class="input-group-append">
-                    <span class="input-group-text">.00</span>
-                </div>*@
-            </div>
-            <span asp-validation-for="Price" class="text-danger">Formato: 0.00</span>
+                <input asp-for="Price" placeholder="0.00" min="0.01" type="number" aria-label="Quantia" class="form-control">
+                   </div>
+            <span asp-validation-for="Price"  class="text-danger">Formato: 0.00</span>
             @*<div class="form-group mt-2 justify-content-center">
                 <label asp-for="Price" class="control-label">Preço</label>
                 <input asp-for="Price" placeholder="Insira o preço" class="form-control" />

@@ -59,9 +59,17 @@ namespace CrudWeb.Controllers
             return View("Criar", model);
         }
 
-        public IActionResult Criar(ProductModel model)
+        //public IActionResult Criar(ProductModel model)
+        //{
+        //    ViewBag.Product = createProduct(model);
+        //    return View();
+        //}
+        public IActionResult Criar(ProductModel product)
         {
-            ViewBag.Product = createProduct(model);
+            if (createProduct(product))
+            {
+                return RedirectToAction("Index", "Product");
+            }
             return View();
         }
 
